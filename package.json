@@ -2,7 +2,7 @@
     "name": "vscode-file-header-comment-helper",
     "displayName": "File-Header-Comment Helper for Visual Studio Code",
     "description": "An extension [for Visual Studio Code], that was created to help simplify the task of adding file-header comments to source code.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "license": "MIT",
     "author": {
         "name": "Brynden \"Gigabyte Giant\" Bielefeld",
