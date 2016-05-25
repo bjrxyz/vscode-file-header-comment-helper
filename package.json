@@ -1,0 +1,74 @@
+{
+    "name": "vscode-file-header-comment-helper",
+    "displayName": "File-Header-Comment Helper for Visual Studio Code",
+    "description": "An extension [for Visual Studio Code], that was created to help simplify the task of adding file-header comments to source code.",
+    "version": "0.0.1",
+    "license": "MIT",
+    "author": {
+        "name": "Brynden \"Gigabyte Giant\" Bielefeld",
+        "email": "brynden.bielefeld@hotmail.com",
+        "url": "https://gigabyte-giant.github.io/"
+    },
+    "publisher": "Gigabyte-Giant",
+    "categories": [
+        "Other"
+    ],
+    "main": "./out/src/extension",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^0.11.0",
+        "typescript": "^1.8.5"
+    },
+    "activationEvents": [
+        "onCommand:extension.insertFileHeaderComment"
+    ],
+    "contributes": {
+        "commands": [
+            {
+                "title": "Insert File-Header-Comment",
+                "command": "extension.insertFileHeaderComment"
+            }
+        ],
+        "configuration": {
+            "title": "File-Header-Comment Helper extension configuration",
+            "type": "object",
+            "properties": {
+                "fileHeaderCommentHelper.projectSettings": {
+                    "title": "File-Header-Comment Helper project settings",
+                    "type": "object",
+                    "description": "This object can be used to change different project-specific settings, such as what the name of the project is.",
+                    "properties": {
+                        "projectName": {
+                            "type": [ "string", "null" ],
+                            "default": null,
+                            "description": "When null, the name of the project will be figured out by the extension. Providing a string value, prevents the extension from trying to figure out what the name of the project is."
+                        }
+                    }
+                },
+                "fileHeaderCommentHelper.languageConfigs": {
+                    "title": "File-Header-Comment Helper language-specific configs",
+                    "type": "object",
+                    "patternProperties": {
+                        "language_*": {
+                            "type": "object",
+                            "required": [ "template" ],
+                            "properties": {
+                                "template": {
+                                    "type": "array",
+                                    "description": "The template that will be used when inserting the comment into a file.\nEach item in the array will be placed on it's own line.\n\nFlags such as $(projectName) and $(currentFile) will be replaced with their corresponding value."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
