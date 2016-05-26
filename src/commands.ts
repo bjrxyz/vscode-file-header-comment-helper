@@ -39,10 +39,28 @@ export function insertFileHeaderComment() {
             
             vscode.commands.executeCommand("workbench.action.files.save");
         } else {
+            var openGlobalSettingsItem: vscode.MessageItem = {
+                "title": "Open Global Settings"
+            };
+            var openWorkspaceSettingsItem: vscode.MessageItem = {
+                "title": "Open Workspace Settings"
+            };
+            
             vscode.window.showErrorMessage(
-                "Unable to locate file-header-comment template for " +
-                _editor.document.languageId + "."
-            );
+                ("Unable to locate file-header-comment template for " +
+                _editor.document.languageId + "."),
+                openGlobalSettingsItem, openWorkspaceSettingsItem
+            ).then((selectedItem: vscode.MessageItem) => {
+                if (selectedItem === openGlobalSettingsItem) {
+                    vscode.commands.executeCommand(
+                        "workbench.action.openGlobalSettings"
+                    );
+                } else if (selectedItem === openWorkspaceSettingsItem) {
+                    vscode.commands.executeCommand(
+                        "workbench.action.openWorkspaceSettings"
+                    );
+                }
+            });
         }
     }
 }
