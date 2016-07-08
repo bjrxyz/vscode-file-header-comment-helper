@@ -72,7 +72,7 @@
                             "properties": {
                                 "template": {
                                     "type": "array",
-                                    "description": "The template that will be used when inserting the comment into a file.\nEach item in the array will be placed on it's own line.\n\nFlags such as $(projectName) and $(currentFile) will be replaced with their corresponding value."
+                                    "description": "The template that will be used when inserting the comment into a file.\nEach item in the array will be placed on it's own line.\n\nFlags such as $(projectName) and $(currentFile) will be replaced with their corresponding value.\n$(date) will be replaced local datetime."
                                 }
                             }
                         }
