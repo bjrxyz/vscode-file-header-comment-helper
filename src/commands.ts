@@ -35,7 +35,7 @@ export function insertFileHeaderComment() {
                 edit.insert(new vscode.Position(0, 0), template
                     .replace("$(projectName)", values.projectName)
                     .replace("$(currentFile)", values.currentFile)
-                    .replace("$(date)", (new Date()).toLocaleString())+"\n");
+                    .replace("$(date)", (new Date()).toLocaleString()));
             });
             
             vscode.commands.executeCommand("workbench.action.files.save");
